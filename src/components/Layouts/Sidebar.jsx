@@ -160,12 +160,15 @@ import {
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SchoolIcon from '@mui/icons-material/School';
+import ApartmentIcon from '@mui/icons-material/Apartment';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import MenuIcon from '@mui/icons-material/Menu';
+import EditNoteIcon from '@mui/icons-material/EditNote';
 import { useNavigate, useLocation } from 'react-router-dom';
 import MobileSidebar from './MobileSidebar';
 import { useTheme } from '@mui/material/styles';
+import TeacherIcon from '../../constant/Icons';
 
 const activeColor = '#6475f7';
 
@@ -179,7 +182,10 @@ const Sidebar = () => {
 
   const navItems = [
     { label: 'Dashboard', path: '/', icon: <DashboardIcon /> },
-    { label: 'Students with Long Label Wrapping Test', path: '/students', icon: <SchoolIcon /> },
+    // { label: 'Academics', path: '/academics', icon: <ApartmentIcon/> },
+    { label: 'Students', path: '/students', icon: <SchoolIcon /> },
+    { label: 'Teachers', path: '/teachers', icon: <TeacherIcon/> },
+    { label: 'Exams', path: '/exams', icon: <EditNoteIcon /> },
   ];
 
   const handleToggle = () => setCollapsed((prev) => !prev);

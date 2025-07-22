@@ -1,4 +1,4 @@
-import { InputBase, styled } from "@mui/material";
+import { FormHelperText, InputBase, styled } from "@mui/material";
 
 //                              Useages
 //  <BasicInput
@@ -11,26 +11,28 @@ import { InputBase, styled } from "@mui/material";
 //   }
 // />
 
-const BasicInput = styled(InputBase)(({ theme }) => ({
-  '&.MuiInputBase-root': {
-    position: 'relative',
-    marginTop: theme.spacing(1.5),
-    backgroundColor: 'white',
-    fontSize: 15,
-    height: '2.5rem',
-    padding: '0px 12px',
-    borderRadius: '4px',
-    border: '1px solid #ced4da',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    display: 'flex',
-    alignItems: 'center',
-    boxSizing: 'border-box',
-    '&:focus-within': {
-      boxShadow: 'unset',
-    },
+
+
+const BasicInput = styled(({ fullWidth: _fullWidth, height: _height, ...props }) => (
+  <InputBase {...props} />
+))(({ theme, fullWidth, height }) => ({
+  position: 'relative',
+  backgroundColor: 'white',
+  fontSize: 15,
+  height: height || '2.5rem',
+  padding: '0px 12px',
+  borderRadius: '4px',
+  border: '1px solid #ced4da',
+  transition: theme.transitions.create(['border-color', 'box-shadow']),
+  display: 'flex',
+  alignItems: 'center',
+  boxSizing: 'border-box',
+  width: fullWidth ? '100% !important' : 'auto',
+
+  '&:focus-within': {
+    boxShadow: 'unset',
   },
 
-  // Start and End Adornment styles
   '& .MuiInputAdornment-positionStart': {
     marginRight: 8,
     color: '#6f42c1',
@@ -39,7 +41,6 @@ const BasicInput = styled(InputBase)(({ theme }) => ({
     marginLeft: 8,
   },
 
-  // Input inside
   '& input': {
     flex: 1,
     fontSize: '15px',
@@ -51,7 +52,22 @@ const BasicInput = styled(InputBase)(({ theme }) => ({
     '&::placeholder': {
       color: '#082852',
     },
+
+    // ✅ Hide number input arrows (Chrome, Safari, Edge)
+    '&[type=number]::-webkit-outer-spin-button, &[type=number]::-webkit-inner-spin-button': {
+      WebkitAppearance: 'none',
+      margin: 0,
+    },
+
+    // ✅ Hide number input arrows (Firefox)
+    '&[type=number]': {
+      MozAppearance: 'textfield',
+    },
   },
 }));
 
 export default BasicInput;
+
+
+
+

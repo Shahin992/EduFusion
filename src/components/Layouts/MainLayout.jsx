@@ -1,11 +1,11 @@
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
 
 const MainLayout = () => {
-    const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    // const theme = useTheme();
+  // const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <Box
       sx={{

@@ -1,7 +1,7 @@
 import React from 'react';
-import StudentsHeader from './StudentsHeaders';
-import StudentsTable from './StudentsTable';
 import GlobalEmptyPage from '../common/GlobalEmptyPage';
+import ExamHeader from './ExamHeader';
+import ExamList from './ExamList';
 
 const rows = [
   {
@@ -407,17 +407,18 @@ status: 'InActive'
 }
 ];
 
-const Student = () => {
+const Exams = () => {
     return (
          <div style={{width:'100%', height:'100%', backgroundColor:'#ffffff', borderRadius:'6px', padding:'20px', display:'flex', flexDirection:'column', gap:'32px'}}>
-            <StudentsHeader/>
-            { (Array.isArray(rows) && rows.length > 0 ) ? (
-                <StudentsTable rows={rows} />
+            <ExamHeader/>
+            <ExamList/>
+            {/* { (Array.isArray(rows) && rows.length > 0 ) ? (
+                <TeachersTable rows={rows} />
                 ) : (
-                <GlobalEmptyPage message="No Student found" showAddButton={true}/>
-            )}
+                <GlobalEmptyPage message="No teacher found" showAddButton={true}/>
+            )} */}
         </div>
     );
 };
 
-export default Student;
+export default Exams;

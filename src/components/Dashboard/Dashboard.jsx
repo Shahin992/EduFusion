@@ -27,21 +27,10 @@ const DUMMY_OPTIONS = [
 
 
 const Dashboard = () => {
-    const [name, setName] = React.useState('');
     
     return (
         <div style={{width:'100%', height:'100%',display:'flex',justifyContent:'center',alignItems:'center', backgroundColor:'#ffffff', borderRadius:'6px'}}>
             dashboard page
-            <div style={{ width: 300 }}>
-      <BasicSelect
-      fullWidth
-        options={DUMMY_OPTIONS}
-         value={name}
-         onChange={(e)=> setName(e.target.value)}
-        defaultText="Select Privacy"
-        mapping={{ label: 'label', value: 'value' }}
-      />
-    </div>
         </div>
     );
 };

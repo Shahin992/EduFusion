@@ -22,7 +22,8 @@ import { styled } from '@mui/material/styles';
 const BasicInputSelect = styled(InputBase)(({ theme }) => ({
   backgroundColor: 'white',
   fontSize: '15px',
-  padding: '9px',
+  padding: '3px 9px',
+  height: '40px !important',
   borderRadius: '4px',
   border: '1px solid #ced4da',
   transition: theme.transitions.create(['border-color', 'box-shadow']),
