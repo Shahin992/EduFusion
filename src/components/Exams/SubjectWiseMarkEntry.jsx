@@ -90,6 +90,7 @@ const SubjectWiseMarkEntry = ({exam}) => {
                                 <CheckCircle sx={{ fontSize: 18, mr: 0.5 }} /> Saved Marks (
                                 {savedMarks.length})
                             </Typography> */}
+                            <Typography fontWeight={600} fontSize={'20px'} pb={1}>Enter Marks for {findSubjectName()}</Typography>
                             <Box sx={{
                                 width: '100%',
                                 maxHeight: "calc(100vh - 370px)",
@@ -120,12 +121,12 @@ const SubjectWiseMarkEntry = ({exam}) => {
                                             alignItems: "center",
                                         }}
                                     >
+
                                         <Box>
                                             <Typography fontWeight={500}>{s.name}</Typography>
                                         </Box>
                                         <div style={{width:'250px'}}>
                                              <div style={{display:'flex' ,gap:'6px'}}>
-                                                <Typography fontWeight={500}>{findSubjectName()}</Typography>
                                               <Typography fontWeight={500}>Max({selectedSubject})</Typography>
                                              </div>
                                               <BasicInput
@@ -134,7 +135,7 @@ const SubjectWiseMarkEntry = ({exam}) => {
                                               onChange={(e)=>console.log(e.target.value)}
                                               />
                                         </div>
-                                        <Box>
+                                        {/* <Box>
                                             <IconButton
                                                 size="small"
                                                 // onClick={() => handleEditStudent(s.studentId)}
@@ -149,7 +150,7 @@ const SubjectWiseMarkEntry = ({exam}) => {
                                             >
                                                 <Delete fontSize="small" color="error" />
                                             </IconButton>
-                                        </Box>
+                                        </Box> */}
                                     </Box>
                                 ))}
                             </Box>
