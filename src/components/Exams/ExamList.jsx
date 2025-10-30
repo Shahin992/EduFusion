@@ -6,9 +6,9 @@ export const dummyExams = [
   {
     id: "exam1",
     title: "Weekly Exam - 05",
-    class: "Class 9",
+    class: 9,
     subjects: [
-      { name: "Physics", marks: 35 },
+      { name: "Physics", marks: 35, },
       { name: "Chemistry", marks: 35 },
       { name: "Biology", marks: 30 },
     ],
@@ -16,7 +16,7 @@ export const dummyExams = [
   {
     id: "exam2",
     title: "Monthly Exam - 02",
-    class: "Class 10",
+    class: 10,
     subjects: [
       { name: "Mathematics", marks: 50 },
       { name: "Higher Math", marks: 50 },
@@ -26,7 +26,7 @@ export const dummyExams = [
   {
     id: "exam3",
     title: "Half-Yearly Exam",
-    class: "Class 8",
+    class: 8,
     subjects: [
       { name: "Bangla", marks: 100 },
       { name: "English", marks: 100 },
@@ -43,6 +43,8 @@ const ExamList = () => {
         sx={{
       height: 'calc(100vh - 325px)',
       overflowY: 'auto',
+      overflowX: 'hidden',
+
       '&::-webkit-scrollbar': {
     width: 6,
   },
@@ -56,7 +58,23 @@ const ExamList = () => {
   },
     }}
         >
-             <Box sx={{ display: "flex", flexDirection:'row', flexWrap: "wrap" }}>
+             <Box
+  sx={{
+    width:'100%',
+    display: 'grid',
+    gap: 2,
+    gridTemplateColumns: {
+      xs: '1fr',              
+      sm: 'repeat(2, 1fr)',   
+      md: 'repeat(3, 1fr)',   
+      lg: 'repeat(3, 1fr)',   
+      xl: 'repeat(3, 1fr)',  
+    },
+    '@media (min-width:1980px)': {
+      gridTemplateColumns: 'repeat(4, 1fr)',
+    },
+  }}
+>
       {dummyExams.map((exam) => (
         <EachExamCardItem key={exam.id} eachExam={exam} />
       ))}

@@ -16,6 +16,8 @@ import MarksEntryDrawer from "./MarksEntryDrawer";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AssignmentIcon from "@mui/icons-material/Assignment"; // for Marks Entry
+import AddOrEditExamModal from "./AddOrEditExamModal";
+import { Link } from "react-router-dom";
 
 const subjectBgColors = [
   "#e0f2fe",
@@ -28,13 +30,26 @@ const subjectBgColors = [
 
 const EachExamCardItem = ({ eachExam }) => {
   const [openMarkEntryDrawer, setOpenMarkEntryDrawer] = useState(false);
+  const [openEditExamModal, setOpenEditExamModal] = useState(false);
+  const [editData, setEditData] = useState(null);
+
+  const handleOpenEditModal = (data) => {
+    setOpenEditExamModal(true);
+    setEditData(data);
+  };
+
+    const handleCloseEditModal = () => {
+    setOpenEditExamModal(false);
+    setEditData(null);
+  }
+
 
   return (
     <>
       <Box>
         <Card
           sx={{
-            width: 400,
+            width: '100%',
             height: 410,
             borderRadius: 3,
             boxShadow: "0 10px 20px -5px rgba(50, 115, 220, 0.3)",
@@ -70,7 +85,7 @@ const EachExamCardItem = ({ eachExam }) => {
             {/* Class and subjects */}
             <Stack direction="row" spacing={1} mb={2}>
               <Chip
-                label={eachExam.class}
+                label={`Class ${eachExam.class}`}
                 color="primary"
                 variant="filled"
                 size="small"
@@ -165,19 +180,22 @@ const EachExamCardItem = ({ eachExam }) => {
               justifyContent="space-between"
               mt="auto"
             >
-              <CustomButton
-                onClick={() => setOpenMarkEntryDrawer(true)}
+              <Link to={`/exam/marks-entry/${eachExam.id}`}>
+                <CustomButton
+                // onClick={() => setOpenMarkEntryDrawer(true)}
                 variant="contained"
                 size="small"
                 startIcon={<AssignmentIcon />}
               >
                 Marks Entry
               </CustomButton>
+              </Link>
               <CustomButton
                 sx={{ width: 90 }}
                 variant="outlined"
                 size="small"
                 startIcon={<EditIcon />}
+                onClick={()=>handleOpenEditModal(eachExam)}
               >
                 Edit
               </CustomButton>
@@ -208,6 +226,16 @@ const EachExamCardItem = ({ eachExam }) => {
           }}
         />
       )}
+
+      {
+        openEditExamModal &&
+       ( <AddOrEditExamModal
+        open={openEditExamModal}
+        onClose={handleCloseEditModal}
+        editData={editData}
+        />)
+
+      }
     </>
   );
 };

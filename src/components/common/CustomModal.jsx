@@ -39,6 +39,8 @@ const CustomModal = ({
   icon,
   imgSrc,
   children,
+  closeButtonText= 'Close',
+  submitButtonText='Submit'
 }) => {
   return (
     <Modal
@@ -76,14 +78,14 @@ const CustomModal = ({
 
         <Box sx={footerStyle}>
           <CustomButton variant="outlined" customColor='red'  onClick={handleClose}>
-            Close
+            {closeButtonText}
           </CustomButton>
           <CustomButton
             variant="contained"
             onClick={handleSubmit}
             disabled={submitDisabled}
           >
-            Submit
+            {submitButtonText}
           </CustomButton>
         </Box>
       </Box>

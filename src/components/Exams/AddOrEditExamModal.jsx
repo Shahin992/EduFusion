@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   TextField,
@@ -21,57 +21,54 @@ import BasicInput from "../common/BasicInput";
 import { classOptions } from "../../constant/CoreConstant";
 import BasicSelect from "../common/BasicSelect";
 
-const AddOrEditExamModal = ({ open, onClose, editData, onSubmit }) => {
+const AddOrEditExamModal = ({ open, onClose, editData }) => {
   const [title, setTitle] = useState("");
   const [selectedClass, setSelectedClass] = useState("");
   const [subjects, setSubjects] = useState([]);
-  const [currentSubject, setCurrentSubject] = useState({ name: "", maxMarks: "" });
+  const [currentSubject, setCurrentSubject] = useState({ name: "", marks: "" });
 
-  const classes = [
-    "Play",
-    "Nursery",
-    "KG",
-    "Class 1",
-    "Class 2",
-    "Class 3",
-    "Class 4",
-    "Class 5",
-    "Class 6",
-    "Class 7",
-    "Class 8",
-    "Class 9",
-    "Class 10",
-    "Class 11",
-    "Class 12",
-  ];
+  useEffect(()=>{
+    if(editData){
+      setTitle(editData.title);
+    setSelectedClass(editData.class);
+    setSubjects(editData.subjects);
+    }
+  },[editData]);
+
 
   const handleAddSubject = () => {
-    if (currentSubject.name && currentSubject.maxMarks) {
+    if (currentSubject.name && currentSubject.marks) {
       const newSubject = {
         id: Date.now().toString(),
         name: currentSubject.name,
-        maxMarks: parseInt(currentSubject.maxMarks),
+        marks: parseInt(currentSubject.marks),
       };
       setSubjects([...subjects, newSubject]);
-      setCurrentSubject({ name: "", maxMarks: "" });
+      setCurrentSubject({ name: "", marks: "" });
     }
   };
 
-  const handleRemoveSubject = (subjectId) => {
-    setSubjects(subjects.filter((subject) => subject.id !== subjectId));
+  const handleRemoveSubject = (subjectName) => {
+    setSubjects(subjects.filter((subject) => subject.name !== subjectName));
   };
 
   const handleSubmit = () => {
     if (title && selectedClass && subjects.length > 0) {
-      onSubmit({
-        title,
-        class: selectedClass,
-        subjects,
-      });
+      const payload = {
+          examTitle:title,
+          examClass: selectedClass,
+          examSubjects: subjects
+        }
+      if(editData){
+        payload.id = editData.id
+        console.log('editdata ===>',payload)
+      } else {
+        console.log('add data===>',payload)
+      }
       setTitle("");
       setSelectedClass("");
       setSubjects([]);
-      setCurrentSubject({ name: "", maxMarks: "" });
+      setCurrentSubject({ name: "", marks: "" });
     }
   };
 
@@ -79,7 +76,7 @@ const AddOrEditExamModal = ({ open, onClose, editData, onSubmit }) => {
     setTitle("");
     setSelectedClass("");
     setSubjects([]);
-    setCurrentSubject({ name: "", maxMarks: "" });
+    setCurrentSubject({ name: "", marks: "" });
     onClose();
   };
 
@@ -88,7 +85,7 @@ const AddOrEditExamModal = ({ open, onClose, editData, onSubmit }) => {
       open={open}
       handleClose={handleClose}
       title={editData ? "Edit Exam" : "Create New Exam"}
-      
+      handleSubmit={handleSubmit}
     >
        <Box>
         {/* Exam Title */}
@@ -126,7 +123,7 @@ const AddOrEditExamModal = ({ open, onClose, editData, onSubmit }) => {
             fullWidth
             options={classOptions}
             value={selectedClass}
-            defaultText="Filter By Class"
+            defaultText="Select a Class"
             mapping={{ label: 'title', value: 'value' }}
             sx={{ minWidth: 160,  }}
             onChange={(e) => setSelectedClass(e.target.value)}
@@ -146,13 +143,13 @@ const AddOrEditExamModal = ({ open, onClose, editData, onSubmit }) => {
           <BasicInput
             type="number"
             placeholder="Max marks"
-            value={currentSubject.maxMarks}
-            onChange={(e) => setCurrentSubject({ ...currentSubject, maxMarks: e.target.value })}
+            value={currentSubject.marks}
+            onChange={(e) => setCurrentSubject({ ...currentSubject, marks: e.target.value })}
            
           />
           <IconButton
             onClick={handleAddSubject}
-            disabled={!currentSubject.name || !currentSubject.maxMarks}
+            disabled={!currentSubject.name || !currentSubject.marks}
             sx={{
               bgcolor: "#6c5ce7",
               color: "white",
@@ -206,7 +203,7 @@ const AddOrEditExamModal = ({ open, onClose, editData, onSubmit }) => {
                       {subject.name}
                     </Typography>
                     <Chip
-                      label={`${subject.maxMarks} marks`}
+                      label={`${subject.marks} marks`}
                       size="small"
                       sx={{
                         backgroundColor: "#e3f2fd",
@@ -221,7 +218,7 @@ const AddOrEditExamModal = ({ open, onClose, editData, onSubmit }) => {
                   </Stack>
                   <IconButton
                     size="small"
-                    onClick={() => handleRemoveSubject(subject.id)}
+                    onClick={() => handleRemoveSubject(subject.name)}
                     sx={{
                       color: "#f44336",
                       "&:hover": {

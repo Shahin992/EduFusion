@@ -268,7 +268,7 @@ const Sidebar = () => {
                 <ListItemText
                   primary={item.label}
                   primaryTypographyProps={{
-                    fontSize: '18px',
+                    fontSize: '14px',
                     fontWeight: 500,
                     color: '#fff',
                     sx: {
