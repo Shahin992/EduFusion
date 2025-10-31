@@ -5,7 +5,7 @@ import Dashboard from '../components/Dashboard/Dashboard';
 import Academics from '../components/Academics/Academics';
 import Teacher from '../components/Teachers/Teacher';
 import Exams from '../components/Exams/Exams';
-import MarksEntry from '../components/Exams/MarksEntry';
+import MarksEntry from '../components/Exams/MarksEntry/MarksEntry';
 
 const router = createBrowserRouter([
   {

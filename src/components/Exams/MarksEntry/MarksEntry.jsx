@@ -22,13 +22,11 @@ import {
   MenuBook,
   Search as SearchIcon,
 } from "@mui/icons-material";
-
-import BasicInput from "../common/BasicInput";
-import BasicSelect from "../common/BasicSelect";
 import { useParams } from 'react-router-dom';
-import { dummyExams } from './ExamList';
 import StudentWiseMarksEntry from './StudentWiseMarksEntry';
-import SubjectWiseMarkEntry from './SubjectWiseMarkEntry';
+import { dummyExams } from '../ExamList';
+import StudentMark from './StudentMarkTable';
+import SubjectWiseMarkEntry from './SubjectWiseMarkEntry/SubjectWiseMarkEntry';
 
 const MarksEntry = () => {
 
@@ -119,7 +117,8 @@ const MarksEntry = () => {
           </div>
           {
             value === 0 && (
-              <StudentWiseMarksEntry exam={exam}/>
+              // <StudentWiseMarksEntry exam={exam}/>
+              <StudentMark exam={exam}/>
             )
           }
           {

@@ -1,9 +1,9 @@
 import { Delete, Edit, People } from '@mui/icons-material';
 import { Box, IconButton, Paper, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import BasicSelect from '../common/BasicSelect';
+import BasicSelect from '../../common/BasicSelect';
 import { mockStudents } from './StudentWiseMarksEntry';
-import BasicInput from '../common/BasicInput';
+import BasicInput from '../../common/BasicInput';
 
 const SubjectWiseMarkEntry = ({exam}) => {
     const [selectedSubject, setSelectedSubject] = useState('');

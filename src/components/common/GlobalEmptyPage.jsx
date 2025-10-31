@@ -19,7 +19,7 @@ const GlobalEmptyPage = ({ message = 'No data available.', showAddButton = false
         alt="Empty State"
         sx={{
           width: 500,
-          height: 500,
+          height: 300,
           objectFit: 'cover',
           mb: 3,
         }}

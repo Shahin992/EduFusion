@@ -34,6 +34,22 @@ export const dummyExams = [
       { name: "ICT", marks: 30 },
     ],
   },
+  {
+    id: "exam4",
+    title: "Half Yearly Exam-2025",
+    class: 9,
+    subjects: [
+      { name: "Physics", marks: 100, },
+      { name: "Chemistry", marks: 100 },
+      { name: "Biology", marks: 100 },
+      { name: "Bangla", marks: 100, },
+      { name: "English", marks: 100 },
+      { name: "Math", marks: 100 },
+      { name: "ICT", marks: 100, },
+      { name: "Higher Math", marks: 100 },
+      { name: "Social Science", marks: 100 },
+    ],
+  },
 ];
 
 

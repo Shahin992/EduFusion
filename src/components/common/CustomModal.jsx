@@ -35,7 +35,8 @@ const CustomModal = ({
   handleClose,
   handleSubmit,
   submitDisabled = false,
-  title,
+  title= 'Custom Modal',
+  description='',
   icon,
   imgSrc,
   children,
@@ -62,9 +63,19 @@ const CustomModal = ({
             />
           ) : null}
 
-          <Typography id="custom-modal-title" variant="h6" component="h2">
+          <Stack direction='column' spacing={1}
+          >
+            <Typography id="custom-modal-title" variant="h6" component="h2">
             {title}
           </Typography>
+          {
+            description && (
+              <Typography variant="body2" color="textSecondary">
+                {description}
+              </Typography>
+            )
+          }
+          </Stack>
         </Stack>
 
         <Divider />

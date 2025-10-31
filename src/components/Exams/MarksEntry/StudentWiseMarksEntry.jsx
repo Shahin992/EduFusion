@@ -20,9 +20,9 @@ import {
     MenuBook,
     Search as SearchIcon,
 } from "@mui/icons-material";
+import BasicInput from '../../common/BasicInput';
+import BasicSelect from '../../common/BasicSelect';
 
-import BasicInput from "../common/BasicInput";
-import BasicSelect from "../common/BasicSelect";
 
 export const mockStudents = [
     // ✅ Class 8

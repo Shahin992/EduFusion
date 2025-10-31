@@ -10,7 +10,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { CustomButton } from "../common/CustomButton";
-import MarksEntryDrawer from "./MarksEntryDrawer";
+import MarksEntryDrawer from "./MarksEntry/MarksEntryDrawer";
 
 // MUI icons
 import EditIcon from "@mui/icons-material/Edit";
