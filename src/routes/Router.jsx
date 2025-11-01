@@ -6,6 +6,7 @@ import Academics from '../components/Academics/Academics';
 import Teacher from '../components/Teachers/Teacher';
 import Exams from '../components/Exams/Exams';
 import MarksEntry from '../components/Exams/MarksEntry/MarksEntry';
+import StudentFees from '../components/StudentFees/StudentFees';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,8 @@ const router = createBrowserRouter([
       { path: 'students', element: <Student/> },
       {path: '/teachers', element: <Teacher/>},
       {path: '/exams', element: <Exams/>},
-      {path: '/exam/marks-entry/:id', element: <MarksEntry/> }
+      {path: '/exam/marks-entry/:id', element: <MarksEntry/> },
+      {path: '/student/fees', element:<StudentFees/>}
     ],
   },
 ]);

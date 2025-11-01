@@ -186,6 +186,7 @@ const Sidebar = () => {
     { label: 'Students', path: '/students', icon: <SchoolIcon /> },
     { label: 'Teachers', path: '/teachers', icon: <TeacherIcon/> },
     { label: 'Exams', path: '/exams', icon: <EditNoteIcon /> },
+    { label:'Fees', path:'/student/fees', icon: <EditNoteIcon /> }
   ];
 
   const handleToggle = () => setCollapsed((prev) => !prev);

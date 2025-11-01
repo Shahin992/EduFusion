@@ -23,9 +23,8 @@ import {
   Search as SearchIcon,
 } from "@mui/icons-material";
 import { useParams } from 'react-router-dom';
-import StudentWiseMarksEntry from './StudentWiseMarksEntry';
 import { dummyExams } from '../ExamList';
-import StudentMark from './StudentMarkTable';
+import StudentMarkTable from './StudentMarkTable';
 import SubjectWiseMarkEntry from './SubjectWiseMarkEntry/SubjectWiseMarkEntry';
 
 const MarksEntry = () => {
@@ -118,7 +117,7 @@ const MarksEntry = () => {
           {
             value === 0 && (
               // <StudentWiseMarksEntry exam={exam}/>
-              <StudentMark exam={exam}/>
+            <StudentMarkTable exam={exam} />
             )
           }
           {

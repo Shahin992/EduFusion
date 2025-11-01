@@ -14,8 +14,50 @@ import { styled } from "@mui/material/styles";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import StudentWiseAddMarksHeader from "./StudentWiseAddMarksHeader";
-import { mockStudents } from "./StudentWiseMarksEntry";
 import AddOrEditStudentMarksModal from "./AddOrEditStudentMarksModal";
+
+export const mockStudents = [
+    // ✅ Class 8
+    { id: "11", name: "Farhana Sultana", class: 8 },
+    { id: "12", name: "Shahriar Kabir", class: 8 },
+    { id: "13", name: "Rumana Akter", class: 8 },
+    { id: "14", name: "Towhidul Islam", class: 8 },
+    { id: "15", name: "Maliha Tasnim", class: 8 },
+    { id: "16", name: "Tariqul Hasan", class: 8 },
+    { id: "17", name: "Nafisa Ahmed", class: 8 },
+    { id: "18", name: "Raihan Chowdhury", class: 8 },
+    { id: "19", name: "Salma Khatun", class: 8 },
+    { id: "20", name: "Aminul Hoque", class: 8 },
+
+    // ✅ Class 9 (Existing + Added Few More)
+    { id: "1", name: "Arif Hossain", class: 9 },
+    { id: "2", name: "Nusrat Jahan", class: 9 },
+    { id: "3", name: "Rahim Uddin", class: 9 },
+    { id: "4", name: "Sumaiya Akter", class: 9 },
+    { id: "5", name: "Hasan Mahmud", class: 9 },
+    { id: "6", name: "Mithila Haque", class: 9 },
+    { id: "7", name: "Imran Hossain", class: 9 },
+    { id: "8", name: "Tanisha Rahman", class: 9 },
+    { id: "9", name: "Jamal Hossain", class: 9 },
+    { id: "21", name: "Sharmin Nahar", class: 9 },
+    { id: "22", name: "Khaled Mahbub", class: 9 },
+    { id: "23", name: "Sadia Islam", class: 9 },
+    { id: "24", name: "Rakibul Alam", class: 9 },
+    { id: "25", name: "Mehnaz Chowdhury", class: 9 },
+
+    // ✅ Class 10 (Existing + Added Few More)
+    { id: "10", name: "Sadia Jahan", class: 10 },
+    { id: "26", name: "Fahim Ahmed", class: 10 },
+    { id: "27", name: "Tania Yasmin", class: 10 },
+    { id: "28", name: "Shuvo Sarker", class: 10 },
+    { id: "29", name: "Priyanka Das", class: 10 },
+    { id: "30", name: "Mahfuzur Rahman", class: 10 },
+    { id: "31", name: "Nabila Sultana", class: 10 },
+    { id: "32", name: "Rashed Karim", class: 10 },
+    { id: "33", name: "Tasnia Rahman", class: 10 },
+    { id: "34", name: "Naimul Hasan", class: 10 },
+    { id: "35", name: "Faria Ahmed", class: 10 }
+];
 
 const CELL_WIDTH = 150;
 const CELL_HEIGHT = 55;
@@ -49,7 +91,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function StudentMark({ exam }) {
+export default function StudentMarkTable({ exam }) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(20);
   const [openStudentEditModal, setOpenEditStudentMarkModal] = useState(false);
@@ -98,7 +140,7 @@ export default function StudentMark({ exam }) {
                   left: 0,
                   zIndex: 3,
                   backgroundColor: "#346fef",
-                  minWidth: CELL_WIDTH,
+                    minWidth: '300px',
                 }}
               >
                 Name
@@ -138,7 +180,7 @@ export default function StudentMark({ exam }) {
                     zIndex: 2,
                     backgroundColor: "#fff",
                     fontWeight: 500,
-                    minWidth: CELL_WIDTH,
+                    minWidth: '300px',
                   }}
                 >
                   {student.name}
